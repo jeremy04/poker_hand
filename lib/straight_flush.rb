@@ -1,6 +1,6 @@
 class StraightFlush
   
-  FACE_CARDS = { "J": 11, "Q": 12, "K": 13, "A": 14 }
+  FACE_CARDS = { "T": 10, "J": 11, "Q": 12, "K": 13, "A": 14 }
 
   attr_reader :winner
 

@@ -2,7 +2,7 @@ class FourOfKind
   
   attr_reader :winner
 
-  FACE_CARDS = { "J": 11, "Q": 12, "K": 13, "A": 14 }
+  FACE_CARDS = {"T": 10, "J": 11, "Q": 12, "K": 13, "A": 14 }
 
   def flopped?(player1, player2)
     @winner = player1 if check_hand(player1)

@@ -1,5 +1,5 @@
 class RoyalFlush
-  NUMBER_PATTERN = ["10","J","Q","K","A"]
+  NUMBER_PATTERN = ["T","J","Q","K","A"]
 
   attr_reader :winner
 
