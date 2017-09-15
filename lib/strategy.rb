@@ -12,13 +12,14 @@ File.open("./lib/poker.txt","r").each do |line|
 
   strategies.each do |strategy|
     s = strategy.new
-    if s.flopped?(player_1, player_2)
-      wins += 1
+    if winner = s.flopped?(player_1, player_2)
+      wins += 1 if winner == player_1
       next
     end
   end
 end
 
+puts wins
 # Spades
 # Hearts
 # Clubs
