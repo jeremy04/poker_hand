@@ -1,5 +1,5 @@
 class RoyalFlush
-  NUMBER_PATTERN = ["T","J","Q","K","A"]
+  FACE_PATTERN = ["T","J","Q","K","A"]
 
   attr_reader :winner
 
@@ -12,10 +12,9 @@ class RoyalFlush
 
   private
 
-  def check_hand(player)
-    suites = player.map { |card| card.chars.last }
-    numbers = player.map { |x| x.chars[0...-1].join }
-    (NUMBER_PATTERN - numbers).empty? && suites.all? { |suite| suites.first == suite }
+  def check_hand(cards)
+    faces = cards.map { |card| card.face }
+    (FACE_PATTERN - faces).empty? && cards.all? { |card| cards.first.same_suite?(card) }
   end
 
 end

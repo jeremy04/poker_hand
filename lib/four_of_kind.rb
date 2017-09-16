@@ -15,20 +15,14 @@ class FourOfKind
 
   private
 
-  def tie_breaker(player1, player2)
-    numbers = player1.map { |x| x.chars[0...-1].join }
-    numbers.uniq.select { |x| numbers.count(x) == 4 }.first
-  end
-  
-  def get_four_kind(player)
-    numbers = player.map { |x| x.chars[0...-1].join }
-    numbers = numbers.map { |num| FACE_CARDS.fetch(num.to_sym, num).to_i }.sort
-    numbers.uniq.select { |x| numbers.count(x) == 4 }.first
+  def get_four_kind(cards)
+    numbers = cards.map { |card| card.number }
+    numbers.uniq.select { |num| numbers.count(num) == 4 }.first
   end
 
-  def check_hand(player)
-    numbers = player.map { |x| x.chars[0...-1].join }
-    numbers.uniq.any? { |x| numbers.count(x) == 4 }
+  def check_hand(cards)
+    numbers = cards.map { |card| card.number }
+    numbers.uniq.any? { |num| numbers.count(num) == 4 }
   end
 
 end

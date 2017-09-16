@@ -1,7 +1,5 @@
 class StraightFlush
   
-  FACE_CARDS = { "T": 10, "J": 11, "Q": 12, "K": 13, "A": 14 }
-
   attr_reader :winner
 
   def flopped?(player1, player2)
@@ -13,11 +11,9 @@ class StraightFlush
 
   private
 
-  def check_hand(player)
-    suites = player.map { |card| card.chars.last }
-    numbers = player.map { |x| x.chars[0...-1].join }
-    numbers = numbers.map { |num| FACE_CARDS.fetch(num.to_sym, num).to_i }.sort
-    numbers == (numbers.min..numbers.max).to_a && suites.all? { |suite| suites.first == suite }
+  def check_hand(cards)
+    numbers = cards.map { |card| card.number }
+    numbers == (numbers.min..numbers.max).to_a && cards.all? { |card| cards.first.same_suite?(card) }
   end
 
 end
