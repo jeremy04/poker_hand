@@ -37,6 +37,5 @@ describe FourOfKind do
       end
     end
 
-
   end
 end

@@ -33,6 +33,12 @@ describe StraightFlush do
     # a royal flush is a straight flush but a special kind of straight flush
     # but lets not worry as long as we check royal first
     context "player 1 and player 2 get a straight flush" do
+      it "returns highest straight flush" do
+        player_1 = ["TD","JD","QD","KD","AD"].map { |c| Card.new(c) }
+        player_2 = ["9H","TH","JH","QH","KH"].map { |c| Card.new(c) }
+        expect(subject.flopped?(player_1, player_2)).to eql player_1
+      end
+      
       it "returns nil" do
         player_1 = ["TD","JD","QD","KD","AD"].map { |c| Card.new(c) }
         player_2 = ["TH","JH","QH","KH","AH"].map { |c| Card.new(c) }

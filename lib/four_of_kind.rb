@@ -1,3 +1,5 @@
+require './lib/high_card'
+
 class FourOfKind
   
   attr_reader :winner
@@ -6,7 +8,7 @@ class FourOfKind
     @winner = player1 if check_hand(player1)
     @winner = player2 if check_hand(player2)
     if check_hand(player1) && check_hand(player2)
-      @winner = get_four_kind(player1) > get_four_kind(player2) ? player1 : player2
+      @winner = HighCard.new.flopped?(player1, player2)
     end
     @winner
   end

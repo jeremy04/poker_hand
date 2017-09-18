@@ -1,6 +1,6 @@
 require './lib/high_card'
 
-class FullHouse
+class ThreeOfKind
 
   attr_reader :winner
 
@@ -17,8 +17,7 @@ class FullHouse
 
   def check_hand(cards)
     numbers = cards.map { |card| card.number }
-    three_kind = numbers.uniq.select { |num| numbers.count(num) == 3 }
-    (numbers - three_kind).uniq.select { |num| numbers.count(num) == 2 }.size == 1
+    numbers.uniq.any? { |num| numbers.count(num) == 3 }
   end
 
 end

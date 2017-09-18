@@ -1,25 +1,32 @@
-require 'byebug'
-
 class HighCard
   
-  FACE_CARDS = { "T": 10, "J": 11, "Q": 12, "K": 13, "A": 14 }
-
   attr_reader :winner
 
   def flopped?(player1, player2)
-    @winner = check_hand(player1, player2)
+    highest = highest(get_numbers(player1), get_numbers(player2))
+    return nil if highest.nil?
+    @winner = player1 if get_numbers(player1).include?(highest.first)
+    @winner = player2 if get_numbers(player2).include?(highest.first)
     @winner
+  end
+
+  def highest(a, b)
+    a = a.sort.reverse
+    b = b.sort.reverse
+    return nil if a.first.nil? && b.first.nil?
+    return a if a.first > b.first
+    return b if b.first > a.first
+    if a.first == b.first
+      a.shift
+      b.shift
+      highest(a, b)
+    end
   end
 
   private
 
-  def check_hand(player1, player2)
-    p1_cards = player1.map { |x| x.chars[0...-1].join }.map { |num| FACE_CARDS.fetch(num.to_sym, num).to_i }.sort
-    p2_cards = player2.map { |x| x.chars[0...-1].join }.map { |num| FACE_CARDS.fetch(num.to_sym, num).to_i }.sort
-    p1_high = p1_cards.max
-    p2_high = p2_cards.max
-    return nil if p1_high == p2_high
-    p1_high > p2_high ? player1 : player2
+  def get_numbers(cards)
+    numbers = cards.map { |card| card.number }
   end
 
 end

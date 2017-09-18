@@ -1,7 +1,7 @@
 require './lib/high_card'
 
-class FullHouse
-
+class TwoPair
+  
   attr_reader :winner
 
   def flopped?(player1, player2)
@@ -17,8 +17,7 @@ class FullHouse
 
   def check_hand(cards)
     numbers = cards.map { |card| card.number }
-    three_kind = numbers.uniq.select { |num| numbers.count(num) == 3 }
-    (numbers - three_kind).uniq.select { |num| numbers.count(num) == 2 }.size == 1
+    numbers.uniq.select { |num| numbers.count(num) == 2 }.size == 2 
   end
 
 end
