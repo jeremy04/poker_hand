@@ -17,7 +17,7 @@ class StraightFlush
 
   def check_hand(cards)
     numbers = cards.map { |card| card.number }
-    numbers == (numbers.min..numbers.max).to_a && cards.all? { |card| cards.first.same_suite?(card) }
+    numbers.sort == (numbers.min..numbers.max).to_a && cards.all? { |card| cards.first.same_suite?(card) }
   end
 
 end
