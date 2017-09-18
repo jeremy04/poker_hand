@@ -2,10 +2,12 @@ require 'pp'
 require './lib/royal_flush'
 require './lib/straight_flush'
 require './lib/four_of_kind'
+require './lib/full_house'
+require './lib/flush'
 require './lib/player'
 
 class App
-  RANKINGS = [RoyalFlush, StraightFlush, FourOfKind]
+  RANKINGS = [RoyalFlush, StraightFlush, FourOfKind, FullHouse, Flush]
 
   def self.run(io: File.open("./lib/poker.txt","r"))
     wins = 0
