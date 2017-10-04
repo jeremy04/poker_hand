@@ -17,5 +17,6 @@ Install gems
     bundle install
 
 Test / Run
+
     rspec spec
     bundle exec ./bin/poker_hand
